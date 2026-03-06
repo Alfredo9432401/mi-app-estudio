@@ -1,0 +1,25 @@
+{
+  "name": "App de Estudio",
+  "short_name": "Estudio",
+  "description": "Tu app de flashcards con repetición espaciada",
+  "start_url": "/mi-app-estudio/",
+  "scope": "/mi-app-estudio/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#F1F5F9",
+  "theme_color": "#8B5CF6",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

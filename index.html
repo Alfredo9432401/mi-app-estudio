@@ -664,7 +664,182 @@
             }
         }
 
-        /* Sidebar background hereda de bottom-nav theme rules already defined */
+        /* ── 6 nav items: reducir padding ── */
+        @media (max-width: 500px) {
+            .nav-item { padding: 6px 6px !important; min-width: 0 !important; flex: 1 !important; }
+            .nav-label { font-size: 0.58rem !important; }
+            .nav-item .nav-icon { font-size: 1.25rem !important; }
+        }
+
+        /* ── Pareja view ── */
+        #pareja-view { display: none; }
+        #pareja-view.active-view { display: flex; }
+
+        /* Setup hero */
+        .pj-setup-hero {
+            position: relative; overflow: hidden;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            border-radius: 24px; padding: 28px 20px 24px;
+            text-align: center; margin-bottom: 18px;
+            box-shadow: 0 8px 24px rgba(139,92,246,0.3);
+        }
+        .pj-setup-orb {
+            position: absolute; border-radius: 50%;
+            background: rgba(255,255,255,0.1); pointer-events: none;
+        }
+        .pj-orb1 { width: 140px; height: 140px; top: -50px; right: -30px; }
+        .pj-orb2 { width: 90px;  height: 90px;  bottom: -30px; left: -20px; }
+
+        /* Fields */
+        .pj-field-group {
+            background: var(--surface); border: 2px solid var(--border);
+            border-radius: 20px; padding: 18px 20px; margin-bottom: 12px;
+        }
+        .pj-label {
+            font-size: 0.75rem; font-weight: 700; color: var(--text-muted);
+            text-transform: uppercase; letter-spacing: 0.5px; display: block; margin-bottom: 8px;
+        }
+        .pj-hint {
+            font-size: 0.74rem; color: var(--text-muted); margin: 0 0 10px; line-height: 1.5;
+        }
+        .pj-input {
+            width: 100%; padding: 13px 16px; border-radius: 14px;
+            border: 2px solid var(--border); background: var(--bg);
+            color: var(--text-main); font-family: 'Poppins', sans-serif;
+            font-size: 0.92rem; font-weight: 600; box-sizing: border-box;
+            outline: none; transition: border-color 0.2s;
+        }
+        .pj-input:focus { border-color: var(--primary); }
+        .pj-input-sm { font-size: 0.82rem; }
+        .pj-btn-primary {
+            width: 100%; padding: 18px; background: var(--primary); color: white;
+            border: none; border-radius: 16px; font-family: 'Poppins', sans-serif;
+            font-size: 1rem; font-weight: 800; cursor: pointer;
+            box-shadow: 0 6px 0 var(--primary-dark);
+            transition: transform 0.15s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.15s;
+            margin-bottom: 4px;
+        }
+        .pj-btn-primary:active { transform: translateY(6px); box-shadow: 0 0px 0 var(--primary-dark); }
+
+        /* Dashboard */
+        .pj-header {
+            display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px;
+        }
+        .pj-title { margin: 0 0 2px; color: var(--text-main); font-size: 1.3rem; font-weight: 800; }
+        .pj-sala-label { font-size: 0.7rem; color: var(--text-muted); font-weight: 600; }
+        .pj-btn-ghost {
+            background: var(--surface); border: 2px solid var(--border); border-radius: 12px;
+            padding: 8px 12px; color: var(--text-muted); font-family: 'Poppins', sans-serif;
+            font-size: 0.72rem; font-weight: 700; cursor: pointer;
+            transition: all 0.2s;
+        }
+        .pj-btn-ghost:hover { border-color: var(--primary); color: var(--primary); }
+
+        /* Sync dot */
+        .pj-sync-dot {
+            width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0;
+            transition: background 0.3s;
+        }
+        .pj-sync-idle    { background: var(--border); }
+        .pj-sync-loading { background: #FFC800; animation: pjSyncPulse 0.8s ease-in-out infinite; }
+        .pj-sync-ok      { background: var(--btn-good); }
+        .pj-sync-error   { background: var(--btn-again); }
+        @keyframes pjSyncPulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+
+        /* Player cards */
+        .pj-cards-grid {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 14px;
+        }
+        .pj-player-card {
+            background: var(--surface); border: 2px solid var(--border);
+            border-radius: 20px; padding: 16px 12px; text-align: center;
+            position: relative; transition: border-color 0.3s, transform 0.3s cubic-bezier(0.34,1.56,0.64,1);
+        }
+        .pj-player-card.pj-me { border-color: var(--primary); }
+        .pj-player-card.pj-winning { transform: scale(1.03); }
+        .pj-me-badge {
+            position: absolute; top: -9px; left: 50%; transform: translateX(-50%);
+            background: var(--primary); color: white; font-size: 0.58rem; font-weight: 800;
+            padding: 2px 9px; border-radius: 20px; white-space: nowrap;
+        }
+        .pj-player-emoji { font-size: 1.9rem; margin-bottom: 4px; display: block; }
+        .pj-player-name  { font-size: 0.82rem; font-weight: 800; color: var(--text-main); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .pj-player-nivel { font-size: 0.66rem; color: var(--text-muted); font-weight: 600; margin: 2px 0 8px; }
+        .pj-player-xp    { font-size: 1.6rem; font-weight: 800; letter-spacing: -0.5px; line-height: 1; }
+        .pj-player-xplbl { font-size: 0.6rem; color: var(--text-muted); font-weight: 600; margin-top: 2px; }
+        .pj-crown { position: absolute; top: -14px; right: 8px; font-size: 1.1rem; animation: pjCrownBounce 1.5s ease-in-out infinite; }
+        @keyframes pjCrownBounce { 0%,100%{transform:translateY(0) rotate(-5deg)} 50%{transform:translateY(-4px) rotate(5deg)} }
+
+        /* Combo card */
+        .pj-combo-card {
+            position: relative; overflow: hidden;
+            background: linear-gradient(135deg, var(--primary) 0%, #1CB0F6 100%);
+            border-radius: 22px; padding: 20px; margin-bottom: 14px;
+            text-align: center; box-shadow: 0 10px 28px rgba(139,92,246,0.25);
+        }
+        .pj-combo-orb {
+            position: absolute; width: 180px; height: 180px; border-radius: 50%;
+            background: rgba(255,255,255,0.08); top: -60px; right: -40px; pointer-events: none;
+        }
+        .pj-combo-label { font-size: 0.72rem; font-weight: 700; color: rgba(255,255,255,0.8); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }
+        .pj-combo-xp    { font-size: 2.8rem; font-weight: 800; color: white; letter-spacing: -1.5px; line-height: 1; }
+        .pj-combo-nivel { font-size: 0.78rem; color: rgba(255,255,255,0.75); margin-top: 4px; font-weight: 600; }
+
+        /* Cards genéricas */
+        .pj-card {
+            background: var(--surface); border: 2px solid var(--border);
+            border-radius: 20px; padding: 18px 18px; margin-bottom: 14px;
+        }
+        .pj-card-title {
+            font-size: 0.78rem; font-weight: 700; color: var(--text-muted);
+            text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 14px;
+        }
+
+        /* Versus */
+        .pj-vs-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
+        .pj-vs-name { font-size: 0.85rem; font-weight: 800; color: var(--text-main); max-width: 38%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+        .pj-vs-name-right { text-align: right; }
+        .pj-vs-pct  { font-size: 0.72rem; color: var(--text-muted); font-weight: 700; text-align: center; }
+        .pj-vs-bar-bg { height: 16px; background: var(--border); border-radius: 20px; overflow: hidden; display: flex; margin-bottom: 10px; }
+        .pj-vs-bar-p1 { height: 100%; background: var(--primary); transition: width 1s cubic-bezier(0.16,1,0.3,1); border-radius: 20px 0 0 20px; }
+        .pj-vs-bar-p2 { height: 100%; background: #1CB0F6; transition: width 1s cubic-bezier(0.16,1,0.3,1); border-radius: 0 20px 20px 0; }
+        .pj-winner-msg { text-align: center; font-size: 0.82rem; font-weight: 700; color: var(--primary); min-height: 20px; }
+
+        /* Retos */
+        .pj-btn-reto {
+            background: var(--primary); color: white; border: none;
+            border-radius: 14px; padding: 12px 16px; cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 4px 0 var(--primary-dark);
+            transition: transform 0.15s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.15s;
+            flex-shrink: 0;
+        }
+        .pj-btn-reto:active { transform: translateY(4px); box-shadow: 0 0px 0 var(--primary-dark); }
+        .pj-reto-burbuja {
+            border-radius: 16px; padding: 10px 14px; margin-bottom: 10px;
+            font-size: 0.82rem; font-weight: 600; line-height: 1.4; position: relative;
+            animation: pjRetoIn 0.4s cubic-bezier(0.34,1.56,0.64,1) both;
+        }
+        @keyframes pjRetoIn { from{opacity:0;transform:scale(0.85) translateY(10px)} to{opacity:1;transform:scale(1) translateY(0)} }
+        .pj-reto-recibido { background: var(--primary-light); border: 2px solid var(--primary); color: var(--primary); }
+        .pj-reto-enviado  { background: rgba(28,176,246,0.12); border: 2px solid #1CB0F6; color: #0369a1; }
+        body.dark-mode .pj-reto-enviado,
+        body.theme-midnight .pj-reto-enviado,
+        body.theme-forest .pj-reto-enviado,
+        body.theme-night .pj-reto-enviado { color: #38bdf8; }
+        .pj-reto-meta { font-size: 0.65rem; opacity: 0.6; margin-top: 3px; }
+
+        /* Historial */
+        .pj-hist-row { display: flex; align-items: center; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid var(--border); }
+        .pj-hist-row:last-child { border-bottom: none; }
+        .pj-hist-fecha { font-size: 0.72rem; color: var(--text-muted); font-weight: 600; min-width: 52px; }
+        .pj-hist-entries { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+        .pj-hist-xp-ok  { font-size: 0.76rem; font-weight: 700; color: var(--btn-good); }
+        .pj-hist-xp-nil { font-size: 0.76rem; font-weight: 600; color: var(--text-muted); }
+        .pj-hist-dot    { color: var(--border); font-size: 0.6rem; }
+
+        /* Last sync */
+        .pj-last-sync { text-align: center; font-size: 0.68rem; color: var(--text-muted); font-weight: 600; padding-bottom: 4px; }
         /* Extra: ensure bottom-nav bg works in sidebar mode for all themes */
         @media (min-width: 600px) {
             body.dark-mode .bottom-nav,
@@ -725,6 +900,39 @@
         }
 
         @keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* ─── TRANSICIONES ENTRE VISTAS: SLIDE DIRECCIONAL ─── */
+        .tab-view {
+            will-change: transform, opacity;
+        }
+        .tab-view.slide-in-right {
+            animation: slideInFromRight 0.38s cubic-bezier(0.22, 1, 0.36, 1) both !important;
+        }
+        .tab-view.slide-in-left {
+            animation: slideInFromLeft 0.38s cubic-bezier(0.22, 1, 0.36, 1) both !important;
+        }
+        .tab-view.slide-out-left {
+            animation: slideOutToLeft 0.28s cubic-bezier(0.55, 0, 1, 0.45) both !important;
+        }
+        .tab-view.slide-out-right {
+            animation: slideOutToRight 0.28s cubic-bezier(0.55, 0, 1, 0.45) both !important;
+        }
+        @keyframes slideInFromRight {
+            from { opacity: 0; transform: translateX(40px) scale(0.97); }
+            to   { opacity: 1; transform: translateX(0) scale(1); }
+        }
+        @keyframes slideInFromLeft {
+            from { opacity: 0; transform: translateX(-40px) scale(0.97); }
+            to   { opacity: 1; transform: translateX(0) scale(1); }
+        }
+        @keyframes slideOutToLeft {
+            from { opacity: 1; transform: translateX(0) scale(1); }
+            to   { opacity: 0; transform: translateX(-30px) scale(0.97); }
+        }
+        @keyframes slideOutToRight {
+            from { opacity: 1; transform: translateX(0) scale(1); }
+            to   { opacity: 0; transform: translateX(30px) scale(0.97); }
+        }
 
         .upload-screen { flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
         .upload-icon-container { 
@@ -1203,10 +1411,37 @@
         .nav-item { 
             display: flex; flex-direction: column; align-items: center; 
             color: var(--text-muted); font-size: 0.75rem; font-weight: 600; gap: 4px; 
-            cursor: pointer; padding: 10px 20px; border-radius: 20px; transition: all 0.3s ease; 
+            cursor: pointer; padding: 10px 20px; border-radius: 20px;
+            transition: color 0.25s cubic-bezier(0.34, 1.56, 0.64, 1),
+                        background-color 0.25s cubic-bezier(0.34, 1.56, 0.64, 1),
+                        transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
+        }
+        .nav-item .nav-icon {
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+                        font-variation-settings 0.2s ease;
         }
         .nav-item.active { color: var(--primary); background-color: var(--primary-light); transform: translateY(-2px); }
-        .nav-item.active .nav-icon { font-variation-settings: 'FILL' 1; }
+        .nav-item.active .nav-icon { 
+            font-variation-settings: 'FILL' 1;
+            transform: scale(1.18) translateY(-1px);
+        }
+        .nav-item:not(.active):hover .nav-icon {
+            transform: scale(1.08) translateY(-2px);
+        }
+        /* Dot indicator animado bajo icono activo */
+        .nav-item::after {
+            content: '';
+            position: absolute;
+            bottom: 5px;
+            left: 50%;
+            transform: translateX(-50%) scale(0);
+            width: 5px; height: 5px;
+            border-radius: 50%;
+            background: var(--primary);
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .nav-item.active::after { transform: translateX(-50%) scale(1); }
         .nav-label { font-size: 0.7rem; font-weight: 600; }
 
         /* --- VISTA DE ESTUDIO (DUOLINGO UI) --- */
@@ -1258,6 +1493,58 @@
             display: flex; flex-direction: column; justify-content: center; text-align: center; 
             margin-bottom: 25px; position: relative; transition: background-color 0.4s ease;
             overflow-y: auto;
+            transform-style: preserve-3d;
+            perspective: 1000px;
+        }
+
+        /* ─── FLIP 3D AL REVELAR RESPUESTA ─── */
+        .flashcard-box.flipping-reveal {
+            animation: cardFlip3D 0.55s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+        }
+        @keyframes cardFlip3D {
+            0%   { transform: rotateY(0deg) scale(1); }
+            30%  { transform: rotateY(-12deg) scale(0.97); box-shadow: 0 20px 40px rgba(0,0,0,0.18), var(--card-glow, none); }
+            60%  { transform: rotateY(5deg) scale(1.015); }
+            100% { transform: rotateY(0deg) scale(1); }
+        }
+
+        /* ─── ANSWER SECTION: entrada más dramática ─── */
+        @keyframes answerReveal {
+            0%   { opacity: 0; transform: translateY(18px) scale(0.94); }
+            60%  { opacity: 1; transform: translateY(-4px) scale(1.01); }
+            100% { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        .answer-container.just-revealed {
+            animation: answerReveal 0.45s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+        }
+
+        /* ─── BOTONES DE RESPUESTA: stagger de entrada ─── */
+        @keyframes btnSlideUp {
+            from { opacity: 0; transform: translateY(22px) scale(0.9); }
+            to   { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        .controls.animating-in .btn-control {
+            animation: btnSlideUp 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+        }
+        .controls.animating-in .btn-control:nth-child(1) { animation-delay: 0.00s; }
+        .controls.animating-in .btn-control:nth-child(2) { animation-delay: 0.06s; }
+        .controls.animating-in .btn-control:nth-child(3) { animation-delay: 0.12s; }
+        .controls.animating-in .btn-control:nth-child(4) { animation-delay: 0.18s; }
+
+        /* ─── STUDY VIEW: entrada cinematic ─── */
+        #study-view.entering {
+            animation: studyViewEnter 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+        }
+        @keyframes studyViewEnter {
+            from { opacity: 0; transform: scale(0.96) translateY(20px); }
+            to   { opacity: 1; transform: scale(1) translateY(0); }
+        }
+        #study-view.leaving {
+            animation: studyViewLeave 0.3s cubic-bezier(0.55, 0, 1, 0.45) forwards;
+        }
+        @keyframes studyViewLeave {
+            from { opacity: 1; transform: scale(1) translateY(0); }
+            to   { opacity: 0; transform: scale(0.95) translateY(15px); }
         }
 
         @keyframes slideOutLeft {
@@ -1304,10 +1591,22 @@
             background: var(--primary); color: white; border: none; 
             padding: 20px; border-radius: 16px; 
             font-size: 1.15rem; font-weight: 700; font-family: 'Poppins', sans-serif; text-transform: uppercase;
-            width: 100%; margin-bottom: 25px; cursor: pointer; transition: all 0.1s;
-            box-shadow: 0 6px 0 var(--primary-dark);
+            width: 100%; margin-bottom: 25px; cursor: pointer;
+            transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1),
+                        box-shadow 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow: 0 6px 0 var(--primary-dark), 0 0 0 0 rgba(139,92,246,0);
+            animation: btnShowPulse 2.8s ease-in-out 1.2s infinite;
         }
-        .btn-show:active { transform: translateY(6px); box-shadow: 0 0 0 var(--primary-dark); }
+        @keyframes btnShowPulse {
+            0%, 100% { box-shadow: 0 6px 0 var(--primary-dark), 0 0 0 0 rgba(139,92,246,0.4); }
+            50%       { box-shadow: 0 6px 0 var(--primary-dark), 0 0 0 10px rgba(139,92,246,0); }
+        }
+        .btn-show:hover { 
+            transform: translateY(-2px) scale(1.01); 
+            box-shadow: 0 8px 0 var(--primary-dark), 0 8px 24px rgba(139,92,246,0.3);
+            animation: none;
+        }
+        .btn-show:active { transform: translateY(6px) scale(0.99); box-shadow: 0 0 0 var(--primary-dark); animation: none; }
         
         .controls { display: none; flex-direction: row; gap: 10px; margin-bottom: 25px; width: 100%; animation: slideUpElastic 0.5s cubic-bezier(0.16, 1, 0.3, 1);}
         
@@ -1316,21 +1615,28 @@
             color: white; font-weight: 700; font-family: 'Poppins', sans-serif; text-transform: uppercase;
             display: flex; flex-direction: column; align-items: center; justify-content: center; 
             cursor: pointer; font-size: 0.8rem; line-height: 1.2; text-align: center; 
-            transition: all 0.1s;
+            transition: transform 0.18s cubic-bezier(0.34, 1.56, 0.64, 1),
+                        box-shadow 0.18s cubic-bezier(0.34, 1.56, 0.64, 1),
+                        filter 0.15s ease;
         }
+        .btn-control:hover { transform: translateY(-3px) scale(1.04); filter: brightness(1.08); }
         .btn-control span { font-size: 0.75rem; font-weight: 600; margin-top: 5px; opacity: 0.9; text-transform: none;}
         
         .btn-again { background: var(--btn-again); box-shadow: 0 5px 0 var(--btn-again-shadow); }
-        .btn-again:active { transform: translateY(5px); box-shadow: 0 0 0 var(--btn-again-shadow); }
+        .btn-again:hover { box-shadow: 0 8px 0 var(--btn-again-shadow), 0 8px 20px rgba(255,75,75,0.25); }
+        .btn-again:active { transform: translateY(5px) scale(0.97); box-shadow: 0 0 0 var(--btn-again-shadow); transition-duration: 0.07s; }
         
         .btn-hard { background: var(--btn-hard); box-shadow: 0 5px 0 var(--btn-hard-shadow); }
-        .btn-hard:active { transform: translateY(5px); box-shadow: 0 0 0 var(--btn-hard-shadow); }
+        .btn-hard:hover { box-shadow: 0 8px 0 var(--btn-hard-shadow), 0 8px 20px rgba(255,200,0,0.25); }
+        .btn-hard:active { transform: translateY(5px) scale(0.97); box-shadow: 0 0 0 var(--btn-hard-shadow); transition-duration: 0.07s; }
         
         .btn-good { background: var(--btn-good); box-shadow: 0 5px 0 var(--btn-good-shadow); }
-        .btn-good:active { transform: translateY(5px); box-shadow: 0 0 0 var(--btn-good-shadow); }
+        .btn-good:hover { box-shadow: 0 8px 0 var(--btn-good-shadow), 0 8px 20px rgba(88,204,2,0.25); }
+        .btn-good:active { transform: translateY(5px) scale(0.97); box-shadow: 0 0 0 var(--btn-good-shadow); transition-duration: 0.07s; }
         
         .btn-easy { background: var(--btn-easy); box-shadow: 0 5px 0 var(--btn-easy-shadow); }
-        .btn-easy:active { transform: translateY(5px); box-shadow: 0 0 0 var(--btn-easy-shadow); }
+        .btn-easy:hover { box-shadow: 0 8px 0 var(--btn-easy-shadow), 0 8px 20px rgba(28,176,246,0.25); }
+        .btn-easy:active { transform: translateY(5px) scale(0.97); box-shadow: 0 0 0 var(--btn-easy-shadow); transition-duration: 0.07s; }
 
         #csv-input { display: none; }
 
@@ -1339,9 +1645,11 @@
             position: fixed; top: 0; left: 0; right: 0; bottom: 0;
             background: linear-gradient(135deg, #8B5CF6, #6D28D9);
             display: flex; flex-direction: column; justify-content: center; align-items: center;
-            z-index: 9999; transition: opacity 0.6s ease, transform 0.6s ease;
+            z-index: 9999; transition: opacity 0.6s ease;
+            overflow: hidden;
         }
-        #splash-screen.hide { opacity: 0; transform: scale(1.05); pointer-events: none; }
+        #splash-screen.hide { opacity: 0; pointer-events: none; }
+        #splash-screen.hide .splash-icon { transform: scale(0.8) translateY(10px); transition: transform 0.5s cubic-bezier(0.55,0,1,0.45); }
         .splash-icon { font-size: 5rem; margin-bottom: 20px; animation: splashBounce 0.8s cubic-bezier(0.16,1,0.3,1); }
         .splash-title { color: white; font-size: 1.8rem; font-weight: 700; letter-spacing: -0.5px; }
         .splash-sub { color: rgba(255,255,255,0.7); font-size: 0.9rem; font-weight: 500; margin-top: 8px; }
@@ -1349,6 +1657,168 @@
             0% { transform: scale(0) rotate(-20deg); opacity: 0; }
             60% { transform: scale(1.2) rotate(5deg); opacity: 1; }
             100% { transform: scale(1) rotate(0); }
+        }
+
+        /* ─── PANTALLA DE BIENVENIDA (solo primera vez) ─── */
+        #welcome-screen {
+            position: fixed; inset: 0; z-index: 10000;
+            background: linear-gradient(150deg, #5B21B6 0%, #7C3AED 35%, #8B5CF6 65%, #1d93d2 100%);
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            overflow: hidden;
+            opacity: 1;
+            transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1), transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        #welcome-screen.hiding {
+            opacity: 0;
+            transform: scale(1.06);
+            pointer-events: none;
+        }
+        #welcome-screen.gone { display: none; }
+
+        /* Partículas de fondo decorativas */
+        #welcome-screen::before {
+            content: '';
+            position: absolute; inset: 0; pointer-events: none;
+            background:
+                radial-gradient(circle at 15% 20%, rgba(255,255,255,0.12) 0%, transparent 35%),
+                radial-gradient(circle at 85% 75%, rgba(28,176,246,0.22) 0%, transparent 40%),
+                radial-gradient(circle at 50% 90%, rgba(139,92,246,0.2) 0%, transparent 40%);
+            animation: wsBgPulse 4s ease-in-out infinite alternate;
+        }
+        @keyframes wsBgPulse {
+            from { opacity: 0.7; }
+            to   { opacity: 1; }
+        }
+        /* Círculos decorativos flotantes */
+        .ws-orb {
+            position: absolute; border-radius: 50%;
+            background: rgba(255,255,255,0.07);
+            pointer-events: none;
+        }
+        .ws-orb-1 { width: 280px; height: 280px; top: -80px; right: -60px; animation: wsOrb1 7s ease-in-out infinite alternate; }
+        .ws-orb-2 { width: 180px; height: 180px; bottom: 40px; left: -50px; animation: wsOrb2 9s ease-in-out infinite alternate; }
+        .ws-orb-3 { width: 120px; height: 120px; bottom: 160px; right: 20px; animation: wsOrb3 5s ease-in-out infinite alternate; }
+        @keyframes wsOrb1 { from { transform: scale(1) translate(0,0); } to { transform: scale(1.15) translate(15px, -20px); } }
+        @keyframes wsOrb2 { from { transform: scale(1) translate(0,0); } to { transform: scale(1.2) translate(20px, -15px); } }
+        @keyframes wsOrb3 { from { transform: scale(1) translate(0,0); } to { transform: scale(0.85) translate(-10px, 10px); } }
+
+        /* Contenido principal del welcome */
+        .ws-content {
+            position: relative; z-index: 2;
+            display: flex; flex-direction: column; align-items: center;
+            width: 100%; max-width: 340px; padding: 0 28px; text-align: center;
+        }
+
+        /* Ícono animado */
+        .ws-icon-wrap {
+            position: relative; margin-bottom: 28px;
+            animation: wsIconEntry 0.9s cubic-bezier(0.34, 1.56, 0.64, 1) 0.2s both;
+        }
+        @keyframes wsIconEntry {
+            from { opacity: 0; transform: scale(0.3) rotate(-30deg); }
+            to   { opacity: 1; transform: scale(1) rotate(0deg); }
+        }
+        .ws-icon-bg {
+            width: 100px; height: 100px; border-radius: 32px;
+            background: rgba(255,255,255,0.18);
+            backdrop-filter: blur(10px);
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.3);
+            animation: wsIconFloat 3s ease-in-out 1.2s infinite;
+        }
+        @keyframes wsIconFloat {
+            0%, 100% { transform: translateY(0px); }
+            50%       { transform: translateY(-8px); }
+        }
+        .ws-icon-glow {
+            position: absolute; inset: -12px; border-radius: 44px;
+            background: rgba(255,255,255,0.15);
+            filter: blur(16px);
+            animation: wsGlowPulse 2s ease-in-out 1.2s infinite alternate;
+        }
+        @keyframes wsGlowPulse {
+            from { opacity: 0.4; transform: scale(0.95); }
+            to   { opacity: 0.8; transform: scale(1.05); }
+        }
+        .ws-icon-emoji { font-size: 3.2rem; filter: drop-shadow(0 4px 12px rgba(0,0,0,0.2)); }
+
+        /* Textos */
+        .ws-title {
+            color: white; font-size: 2.2rem; font-weight: 800;
+            letter-spacing: -1px; margin: 0 0 8px;
+            animation: wsTextEntry 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.55s both;
+        }
+        .ws-subtitle {
+            color: rgba(255,255,255,0.78); font-size: 1rem; font-weight: 500;
+            line-height: 1.5; margin: 0 0 36px;
+            animation: wsTextEntry 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.7s both;
+        }
+        @keyframes wsTextEntry {
+            from { opacity: 0; transform: translateY(20px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Features pills */
+        .ws-features {
+            display: flex; flex-direction: column; gap: 10px;
+            width: 100%; margin-bottom: 36px;
+            animation: wsTextEntry 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.85s both;
+        }
+        .ws-feature-item {
+            display: flex; align-items: center; gap: 14px;
+            background: rgba(255,255,255,0.12);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 16px; padding: 13px 16px;
+            opacity: 0;
+            animation: wsFeatureIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+        }
+        .ws-feature-item:nth-child(1) { animation-delay: 0.9s; }
+        .ws-feature-item:nth-child(2) { animation-delay: 1.05s; }
+        .ws-feature-item:nth-child(3) { animation-delay: 1.2s; }
+        @keyframes wsFeatureIn {
+            from { opacity: 0; transform: translateX(-20px) scale(0.9); }
+            to   { opacity: 1; transform: translateX(0) scale(1); }
+        }
+        .ws-feature-icon {
+            font-size: 1.6rem; flex-shrink: 0;
+            filter: drop-shadow(0 2px 6px rgba(0,0,0,0.2));
+        }
+        .ws-feature-text { text-align: left; }
+        .ws-feature-title { color: white; font-size: 0.88rem; font-weight: 700; }
+        .ws-feature-desc  { color: rgba(255,255,255,0.65); font-size: 0.75rem; margin-top: 1px; }
+
+        /* Botón de entrada */
+        .ws-btn {
+            width: 100%; padding: 18px;
+            background: white; color: #6D28D9;
+            border: none; border-radius: 18px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.05rem; font-weight: 800;
+            cursor: pointer; letter-spacing: -0.3px;
+            box-shadow: 0 8px 0 rgba(0,0,0,0.15), 0 20px 40px rgba(0,0,0,0.15);
+            transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1),
+                        box-shadow 0.2s ease;
+            opacity: 0;
+            animation: wsTextEntry 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 1.4s both;
+            display: flex; align-items: center; justify-content: center; gap: 10px;
+        }
+        .ws-btn:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 11px 0 rgba(0,0,0,0.15), 0 24px 48px rgba(0,0,0,0.2);
+        }
+        .ws-btn:active {
+            transform: translateY(5px) scale(0.99);
+            box-shadow: 0 3px 0 rgba(0,0,0,0.15);
+        }
+        .ws-btn-arrow { font-size: 1.3rem; transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1); }
+        .ws-btn:hover .ws-btn-arrow { transform: translateX(4px); }
+
+        /* Nota de retorno */
+        .ws-note {
+            color: rgba(255,255,255,0.5); font-size: 0.72rem;
+            margin-top: 14px;
+            animation: wsTextEntry 0.5s ease 1.7s both;
         }
 
         /* --- CELEBRACIÓN --- */
@@ -2903,6 +3373,69 @@
             <div class="splash-sub">Cargando tu progreso...</div>
         </div>
 
+        <!-- ─── PANTALLA DE BIENVENIDA (solo primera vez) ─── -->
+        <div id="welcome-screen" style="display:none;">
+            <!-- Orbes decorativos -->
+            <div class="ws-orb ws-orb-1"></div>
+            <div class="ws-orb ws-orb-2"></div>
+            <div class="ws-orb ws-orb-3"></div>
+
+            <div class="ws-content">
+                <!-- Ícono animado -->
+                <div class="ws-icon-wrap">
+                    <div class="ws-icon-glow"></div>
+                    <div class="ws-icon-bg">
+                        <span class="ws-icon-emoji">📚</span>
+                    </div>
+                </div>
+
+                <h1 class="ws-title">Bienvenida</h1>
+                <p class="ws-subtitle">Tu app de estudio con repetición espaciada para aprender más rápido y olvidar menos.</p>
+
+                <!-- Features -->
+                <div class="ws-features">
+                    <div class="ws-feature-item">
+                        <span class="ws-feature-icon">🧠</span>
+                        <div class="ws-feature-text">
+                            <div class="ws-feature-title">Repetición espaciada</div>
+                            <div class="ws-feature-desc">El algoritmo que usan los mejores estudiantes</div>
+                        </div>
+                    </div>
+                    <div class="ws-feature-item">
+                        <span class="ws-feature-icon">📊</span>
+                        <div class="ws-feature-text">
+                            <div class="ws-feature-title">Seguimiento de progreso</div>
+                            <div class="ws-feature-desc">Mira cómo crece tu conocimiento día a día</div>
+                        </div>
+                    </div>
+                    <div class="ws-feature-item">
+                        <span class="ws-feature-icon">🎯</span>
+                        <div class="ws-feature-text">
+                            <div class="ws-feature-title">Misiones y logros</div>
+                            <div class="ws-feature-desc">Mantén tu racha y desbloquea recompensas</div>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="ws-btn" onclick="cerrarWelcomeScreen()">
+                    ¡Empezar a estudiar!
+                    <span class="ws-btn-arrow">→</span>
+                </button>
+                <p class="ws-note">Solo verás esto una vez ✨</p>
+            </div>
+        </div>
+        <!-- Mostrar welcome ANTES de que cargue nada, si es primera vez; ocultar splash si no es primera vez -->
+        <script>
+            if (!localStorage.getItem('welcome_shown_v1')) {
+                document.getElementById('welcome-screen').style.display = 'flex';
+                var s = document.getElementById('splash-screen');
+                if (s) s.style.display = 'none';
+            } else {
+                // Ya se vio el welcome — ocultar splash hasta que window.onload lo muestre brevemente
+                // No hacer nada: el splash normal se mostrará y ocultará solo
+            }
+        </script>
+
         <!-- CELEBRACIÓN OVERLAY -->
         <div id="celebration-overlay">
             <div class="celebration-msg">
@@ -3310,6 +3843,90 @@
             </section>
             <!-- FIN PESTAÑA: AJUSTES -->
 
+            <!-- ══════════════════════════════════════════
+                 PESTAÑA: PAREJA
+                 ══════════════════════════════════════════ -->
+            <section id="pareja-view" class="tab-view">
+
+                <!-- ── SETUP ── -->
+                <div id="pareja-setup" style="display:none;">
+                    <div class="pj-setup-hero">
+                        <div class="pj-setup-orb pj-orb1"></div>
+                        <div class="pj-setup-orb pj-orb2"></div>
+                        <div style="font-size:3.5rem; margin-bottom:10px; filter:drop-shadow(0 4px 16px rgba(139,92,246,0.4));">💑</div>
+                        <h2 style="margin:0 0 6px; color:white; font-size:1.5rem; font-weight:800; letter-spacing:-0.5px;">Modo Pareja</h2>
+                        <p style="margin:0; color:rgba(255,255,255,0.75); font-size:0.85rem; line-height:1.5;">Estudien juntos y compitan por el XP semanal</p>
+                    </div>
+
+                    <div class="pj-field-group">
+                        <label class="pj-label">Tu apodo</label>
+                        <input id="pareja-nombre-input" type="text" placeholder="Ej: Sofi 🌸" maxlength="20" class="pj-input">
+                    </div>
+
+                    <div class="pj-field-group">
+                        <label class="pj-label">Nombre de sala</label>
+                        <p class="pj-hint"><b>Primera vez:</b> inventa un nombre → conecta → copia el ID que aparece y mándalo a tu pareja.<br><b>Segunda persona:</b> escribe el mismo nombre y pega el ID que te mandaron.</p>
+                        <input id="pareja-sala-input" type="text" placeholder="Ej: mochi2025" maxlength="30" class="pj-input" style="margin-bottom:10px;">
+                        <input id="pareja-binid-input" type="text" placeholder="ID de sala (vacío si eres la primera)" maxlength="30" class="pj-input pj-input-sm">
+                    </div>
+
+                    <button onclick="guardarConfigPareja()" class="pj-btn-primary">
+                        Conectar con mi pareja 💑
+                    </button>
+                </div>
+
+                <!-- ── DASHBOARD ── -->
+                <div id="pareja-dashboard" style="display:none;">
+
+                    <!-- Header con estado de sync -->
+                    <div class="pj-header">
+                        <div>
+                            <h2 class="pj-title">💑 Pareja</h2>
+                            <div id="pareja-sala-label" class="pj-sala-label"></div>
+                        </div>
+                        <div style="display:flex; gap:8px; align-items:center;">
+                            <div id="pareja-sync-dot" class="pj-sync-dot pj-sync-idle" title="Estado de sincronización"></div>
+                            <button onclick="resetPareja()" class="pj-btn-ghost">Cambiar</button>
+                        </div>
+                    </div>
+
+                    <!-- Tarjetas jugadores -->
+                    <div id="pareja-cards" class="pj-cards-grid"></div>
+
+                    <!-- XP combinado hero -->
+                    <div class="pj-combo-card">
+                        <div class="pj-combo-orb"></div>
+                        <div class="pj-combo-label">⚡ XP Combinado</div>
+                        <div id="pareja-xp-total" class="pj-combo-xp">0</div>
+                        <div id="pareja-total-label" class="pj-combo-nivel"></div>
+                    </div>
+
+                    <!-- Versus semana -->
+                    <div class="pj-card">
+                        <div class="pj-card-title">⚔️ Batalla semanal</div>
+                        <div class="pj-vs-row">
+                            <span id="pareja-vs-nombre1" class="pj-vs-name pj-vs-name-left">—</span>
+                            <span id="pareja-vs-pct" class="pj-vs-pct">—</span>
+                            <span id="pareja-vs-nombre2" class="pj-vs-name pj-vs-name-right">—</span>
+                        </div>
+                        <div class="pj-vs-bar-bg">
+                            <div id="pareja-bar-p1" class="pj-vs-bar-p1"></div>
+                            <div id="pareja-bar-p2" class="pj-vs-bar-p2"></div>
+                        </div>
+                        <div id="pareja-winner-msg" class="pj-winner-msg"></div>
+                    </div>
+
+                    <!-- Historial -->
+                    <div class="pj-card" style="margin-bottom:8px;">
+                        <div class="pj-card-title">📅 Últimas sesiones</div>
+                        <div id="pareja-historial"></div>
+                    </div>
+
+                    <div id="pareja-last-sync" class="pj-last-sync"></div>
+                </div>
+            </section>
+            <!-- FIN PESTAÑA: PAREJA -->
+
         </div>
         <!-- FIN CONTENEDOR PRINCIPAL DE PESTAÑAS -->
 
@@ -3325,6 +3942,9 @@
             </div>
             <div class="nav-item" onclick="switchTab('stats-view', this); renderStats()">
                 <span class="material-symbols-rounded nav-icon">bar_chart</span><span class="nav-label">Stats</span>
+            </div>
+            <div class="nav-item" onclick="switchTab('pareja-view', this); renderPareja()">
+                <span class="material-symbols-rounded nav-icon">favorite</span><span class="nav-label">Pareja</span>
             </div>
             <div class="nav-item" onclick="switchTab('settings-view', this)">
                 <span class="material-symbols-rounded nav-icon">tune</span><span class="nav-label">Ajustes</span>
@@ -4039,7 +4659,12 @@
 
             if (queue.length === 0) { alert("No hay tarjetas falladas en este mazo."); return; }
             sessionTotal = queue.length;
-            document.getElementById('study-view').style.display = 'flex';
+            const studyViewQR = document.getElementById('study-view');
+            studyViewQR.style.display = 'flex';
+            studyViewQR.classList.remove('leaving');
+            void studyViewQR.offsetWidth;
+            studyViewQR.classList.add('entering');
+            studyViewQR.addEventListener('animationend', () => studyViewQR.classList.remove('entering'), { once: true });
             (function(){ const nav = document.getElementById('bottom-nav'); if (nav) nav.style.display = window.innerWidth >= 768 ? 'flex' : 'none'; })()
             document.getElementById('top-bar').style.display = 'none';
             const cardBox = document.getElementById('the-card');
@@ -4064,7 +4689,13 @@
 
             sessionTotal = queue.length;
 
-            document.getElementById('study-view').style.display = 'flex';
+            const studyView = document.getElementById('study-view');
+            studyView.style.display = 'flex';
+            studyView.classList.remove('leaving');
+            void studyView.offsetWidth;
+            studyView.classList.add('entering');
+            studyView.addEventListener('animationend', () => studyView.classList.remove('entering'), { once: true });
+
             (function(){ const nav = document.getElementById('bottom-nav'); if (nav) nav.style.display = window.innerWidth >= 768 ? 'flex' : 'none'; })()
             document.getElementById('top-bar').style.display = 'none';
             
@@ -4077,8 +4708,13 @@
         }
 
         function closeStudy() {
-            detenerVoz(); 
-            document.getElementById('study-view').style.display = 'none';
+            detenerVoz();
+            const studyView = document.getElementById('study-view');
+            studyView.classList.add('leaving');
+            studyView.addEventListener('animationend', () => {
+                studyView.style.display = 'none';
+                studyView.classList.remove('leaving');
+            }, { once: true });
             (function(){ const nav = document.getElementById('bottom-nav'); if (nav) nav.style.display = 'flex'; })()
             document.getElementById('top-bar').style.display = 'flex';
             guardarMazosEnMemoria(); 
@@ -4140,7 +4776,20 @@
         }
 
         function reveal() {
-            document.getElementById('a-section').style.display = 'block';
+            // ─── Flip 3D en la tarjeta ───
+            const cardBox = document.getElementById('the-card');
+            cardBox.classList.add('flipping-reveal');
+            cardBox.addEventListener('animationend', () => {
+                cardBox.classList.remove('flipping-reveal');
+            }, { once: true });
+
+            const aSection = document.getElementById('a-section');
+            aSection.style.display = 'block';
+            aSection.classList.remove('just-revealed');
+            // forzar reflow para reiniciar animación
+            void aSection.offsetWidth;
+            aSection.classList.add('just-revealed');
+
             document.getElementById('show-btn').style.display = 'none';
 
             const carta = deckActivo.cartas[currentCardIndex];
@@ -4153,7 +4802,16 @@
             document.getElementById('time-good').innerText  = formatearTiempo(intGood);
             document.getElementById('time-easy').innerText  = formatearTiempo(intEasy);
 
-            document.getElementById('control-group').style.display = 'flex';
+            // ─── Stagger de entrada en botones de respuesta ───
+            const controls = document.getElementById('control-group');
+            controls.style.display = 'flex';
+            controls.classList.remove('animating-in');
+            void controls.offsetWidth;
+            controls.classList.add('animating-in');
+            controls.addEventListener('animationend', () => {
+                controls.classList.remove('animating-in');
+            }, { once: true });
+
             setTimeout(() => { if (ttsAutoEnabled) leerTexto('a-text'); }, 300);
         }
 
@@ -4450,17 +5108,41 @@
 
         setInterval(verificarNotificacionesPendientes, 60000);
 
-        function switchTab(viewId, element) {
-            document.querySelectorAll('.tab-view').forEach(view => {
-                view.classList.remove('active-view');
-            });
+        // Orden de tabs para determinar dirección del slide
+        const TAB_ORDER = ['home-view', 'library-view', 'edit-view', 'stats-view', 'pareja-view', 'settings-view'];
+        let _currentTabId = 'home-view';
 
-            const targetView = document.getElementById(viewId);
-            targetView.classList.add('active-view');
+        function switchTab(viewId, element) {
+            if (viewId === _currentTabId) return;
+
+            const fromIndex = TAB_ORDER.indexOf(_currentTabId);
+            const toIndex   = TAB_ORDER.indexOf(viewId);
+            const goingRight = toIndex > fromIndex;
+
+            const currentView = document.getElementById(_currentTabId);
+            const targetView  = document.getElementById(viewId);
+
+            // Clases de salida en la vista actual
+            if (currentView && currentView.classList.contains('active-view')) {
+                currentView.classList.add(goingRight ? 'slide-out-left' : 'slide-out-right');
+                currentView.addEventListener('animationend', () => {
+                    currentView.classList.remove('active-view', 'slide-out-left', 'slide-out-right');
+                }, { once: true });
+            } else {
+                document.querySelectorAll('.tab-view').forEach(v => v.classList.remove('active-view'));
+            }
+
+            // Entrada de la nueva vista
+            targetView.classList.add('active-view', goingRight ? 'slide-in-right' : 'slide-in-left');
             targetView.scrollTop = 0;
+            targetView.addEventListener('animationend', () => {
+                targetView.classList.remove('slide-in-right', 'slide-in-left');
+            }, { once: true });
 
             document.querySelectorAll('.nav-item').forEach(btn => btn.classList.remove('active'));
             element.classList.add('active');
+
+            _currentTabId = viewId;
 
             // Actualizar diagnóstico TTS al abrir Ajustes
             if (viewId === 'settings-view') setTimeout(actualizarDiagTTS, 100);
@@ -4532,10 +5214,24 @@
             setTimeout(() => { splash.style.display = 'none'; }, 700);
         }
 
+        // ─── PANTALLA DE BIENVENIDA (solo primera vez) ───
+        // Ya se activa inline antes del render; esta función es solo un no-op de compatibilidad
+        function mostrarWelcomeScreenSiPrimera() { /* activado inline en el HTML */ }
+
+        function cerrarWelcomeScreen() {
+            localStorage.setItem('welcome_shown_v1', '1');
+            const welcome = document.getElementById('welcome-screen');
+            welcome.classList.add('hiding');
+            setTimeout(() => {
+                welcome.classList.add('gone');
+                welcome.style.display = 'none';
+            }, 750);
+        }
+
         // ---- CELEBRACIÓN ----
         function mostrarCelebracion(total) {
             const overlay = document.getElementById('celebration-overlay');
-            document.getElementById('celebration-sub-text').textContent = `¡Repasaste ${total} tarjeta${total !== 1 ? 's' : ''}! <span class="material-symbols-rounded">fitness_center</span>`;
+            document.getElementById('celebration-sub-text').innerHTML = `¡Repasaste ${total} tarjeta${total !== 1 ? 's' : ''}! <span class="material-symbols-rounded">fitness_center</span>`;
             overlay.style.display = 'flex';
 
             // Confetti
@@ -5084,11 +5780,13 @@
             forzarCargaDeVoces();
             setTimeout(verificarNotificacionesPendientes, 3000);
             setTimeout(ocultarSplash, 1400);
+            setTimeout(mostrarWelcomeScreenSiPrimera, 2200);
             setTimeout(initSortable, 100);
             setTimeout(renderStats, 50);
             initXP();
             renderLogros();
             renderMisiones();
+            renderPareja();
         };
 
         // ============================================================
@@ -5194,7 +5892,411 @@
             // Verificar logros
             verificarLogros(xpDespues);
 
+            // ── Sincronizar XP con sala de pareja ──
+            parejaRegistrarXP(ganado);
+
             return ganado;
+        }
+
+        // ═══════════════════════════════════════════════════════
+        //  SISTEMA PAREJA — storage compartido via claude.ai
+        // ═══════════════════════════════════════════════════════
+
+        // ═══════════════════════════════════════════════════════
+        //  SISTEMA PAREJA — JSONBin.io
+        // ═══════════════════════════════════════════════════════
+
+        function getParejaConfig() {
+            try {
+                return JSON.parse(localStorage.getItem('pareja_config') || 'null');
+            } catch(e) { return null; }
+        }
+
+        function guardarConfigPareja() {
+            const nombre = document.getElementById('pareja-nombre-input').value.trim();
+            const sala   = document.getElementById('pareja-sala-input').value.trim().toLowerCase().replace(/\s+/g,'_');
+            const binId  = document.getElementById('pareja-binid-input').value.trim() || null;
+            if (!nombre) { alert('Escribe tu apodo primero 😊'); return; }
+            if (!sala)   { alert('Escribe un nombre de sala 🔑'); return; }
+            localStorage.setItem('pareja_config', JSON.stringify({ nombre, sala, binId }));
+            renderPareja();
+        }
+
+        function resetPareja() {
+            if (confirm('¿Desconectarte de la sala? Tus datos en la nube se mantienen.')) {
+                localStorage.removeItem('pareja_config');
+                renderPareja();
+            }
+        }
+
+        // ── JSONBin.io API ──
+        const JBIN_KEY  = '$2a$10$M8nKwFNbapnI2wmBKHSE.O0FIoXPUtk5mbD72I4owV81FJfHKmuou';
+        const JBIN_BASE = 'https://api.jsonbin.io/v3';
+
+        async function jbinBuscarBin(sala) {
+            // Buscar entre los bins propios si ya existe uno para esta sala
+            const cfg = getParejaConfig();
+            if (cfg && cfg.binId) return cfg.binId;
+
+            // Buscar en metadata por nombre de colección
+            try {
+                const r = await fetch(`${JBIN_BASE}/b?collectionId=pareja_${sala}`, {
+                    headers: { 'X-Master-Key': JBIN_KEY }
+                });
+                const j = await r.json();
+                if (j.result && j.result.length > 0) {
+                    return j.result[0].record._id || null;
+                }
+            } catch(e) {}
+            return null;
+        }
+
+        async function jbinLeer(binId) {
+            const r = await fetch(`${JBIN_BASE}/b/${binId}/latest`, {
+                headers: { 'X-Master-Key': JBIN_KEY, 'X-Bin-Meta': 'false' }
+            });
+            if (!r.ok) throw new Error('read failed');
+            return await r.json();
+        }
+
+        async function jbinCrear(sala, data) {
+            const r = await fetch(`${JBIN_BASE}/b`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-Master-Key': JBIN_KEY,
+                    'X-Bin-Name': 'pareja_' + sala,
+                    'X-Bin-Private': 'false'
+                },
+                body: JSON.stringify(data)
+            });
+            if (!r.ok) throw new Error('create failed');
+            const j = await r.json();
+            return j.metadata.id;
+        }
+
+        async function jbinActualizar(binId, data) {
+            const r = await fetch(`${JBIN_BASE}/b/${binId}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-Master-Key': JBIN_KEY
+                },
+                body: JSON.stringify(data)
+            });
+            if (!r.ok) throw new Error('update failed');
+        }
+
+        async function parejaObtenerOCrearBin(sala, dataInicial) {
+            const cfg = getParejaConfig();
+            // 1. Tenemos binId guardado localmente
+            if (cfg && cfg.binId) {
+                try { await jbinLeer(cfg.binId); return cfg.binId; } catch(e) {}
+            }
+            // 2. Buscar por nombre de bin
+            try {
+                const r = await fetch(`${JBIN_BASE}/b?collectionId=`, {
+                    headers: { 'X-Master-Key': JBIN_KEY }
+                });
+                // JSONBin free no tiene colecciones, buscar por nombre en listado
+            } catch(e) {}
+            // 3. Crear nuevo bin
+            const binId = await jbinCrear(sala, dataInicial);
+            // Guardar binId localmente
+            const newCfg = { ...cfg, binId };
+            localStorage.setItem('pareja_config', JSON.stringify(newCfg));
+            return binId;
+        }
+
+        // Cache local para evitar lecturas excesivas
+        let _parejaCacheData = null;
+        let _parejaCacheBinId = null;
+        let _parejaCacheTime = 0;
+
+        async function parejaLeerDatos() {
+            const cfg = getParejaConfig();
+            if (!cfg) return null;
+            // Usar cache si tiene menos de 30s
+            if (_parejaCacheBinId === cfg.binId && Date.now() - _parejaCacheTime < 30000 && _parejaCacheData) {
+                return _parejaCacheData;
+            }
+            if (!cfg.binId) return null;
+            try {
+                const data = await jbinLeer(cfg.binId);
+                _parejaCacheData = data;
+                _parejaCacheBinId = cfg.binId;
+                _parejaCacheTime = Date.now();
+                return data;
+            } catch(e) { return _parejaCacheData; }
+        }
+
+        async function parejaGuardarDatos(data) {
+            const cfg = getParejaConfig();
+            if (!cfg) return;
+            _parejaCacheData = data;
+            _parejaCacheTime = Date.now();
+            if (!cfg.binId) {
+                const binId = await jbinCrear(cfg.sala, data);
+                const newCfg = { ...cfg, binId };
+                localStorage.setItem('pareja_config', JSON.stringify(newCfg));
+                _parejaCacheBinId = binId;
+            } else {
+                await jbinActualizar(cfg.binId, data);
+            }
+        }
+
+        async function parejaRegistrarXP(xpGanado) {
+            const cfg = getParejaConfig();
+            if (!cfg) return;
+            try {
+                let data = await parejaLeerDatos();
+                if (!data) data = { sala: cfg.sala, jugadores: {} };
+                if (!data.jugadores) data.jugadores = {};
+                if (!data.jugadores[cfg.nombre]) {
+                    data.jugadores[cfg.nombre] = { xpTotal: 0, sesiones: [] };
+                }
+                data.jugadores[cfg.nombre].xpTotal += xpGanado;
+                const hoy = new Date().toISOString().slice(0,10);
+                const sesiones = data.jugadores[cfg.nombre].sesiones;
+                const hoyIdx = sesiones.findIndex(s => s.fecha === hoy);
+                if (hoyIdx >= 0) sesiones[hoyIdx].xp += xpGanado;
+                else sesiones.push({ fecha: hoy, xp: xpGanado });
+                data.jugadores[cfg.nombre].sesiones = sesiones.slice(-14);
+                await parejaGuardarDatos(data);
+            } catch(e) { console.warn('pareja sync error', e); }
+        }
+
+        function parejaSetLoading(msg) {
+            const dash = document.getElementById('pareja-dashboard');
+            if (!dash) return;
+            let el = document.getElementById('pareja-loading-msg');
+            if (!el) {
+                el = document.createElement('div');
+                el.id = 'pareja-loading-msg';
+                el.style.cssText = 'text-align:center; padding:20px; color:var(--text-muted); font-size:0.85rem; font-weight:600;';
+                dash.prepend(el);
+            }
+            el.textContent = msg;
+            el.style.display = msg ? 'block' : 'none';
+        }
+
+        async function renderPareja(silent = false) {
+            const cfg = getParejaConfig();
+            document.getElementById('pareja-setup').style.display     = cfg ? 'none'  : 'block';
+            document.getElementById('pareja-dashboard').style.display = cfg ? 'block' : 'none';
+            if (!cfg) { parejaStopAutoRefresh(); return; }
+
+            document.getElementById('pareja-sala-label').textContent = '🔑 Sala: ' + cfg.sala;
+            if (!silent) parejaSetLoading('⏳ Sincronizando con la nube...');
+            parejaSyncDot('loading');
+
+            try {
+                if (!cfg.binId) {
+                    const dataInicial = {
+                        sala: cfg.sala,
+                        jugadores: { [cfg.nombre]: { xpTotal: parseInt(localStorage.getItem('totalXP'))||0, sesiones:[] } },
+                        retos: []
+                    };
+                    const binId = await jbinCrear(cfg.sala, dataInicial);
+                    const newCfg = { ...cfg, binId };
+                    localStorage.setItem('pareja_config', JSON.stringify(newCfg));
+                    _parejaCacheData = dataInicial;
+                    _parejaCacheBinId = binId;
+                    _parejaCacheTime = Date.now();
+                }
+
+                _parejaCacheTime = 0;
+                let data = await parejaLeerDatos();
+                if (!data) data = { jugadores: {}, retos: [] };
+                if (!data.jugadores) data.jugadores = {};
+                if (!data.retos) data.retos = [];
+
+                if (!data.jugadores[cfg.nombre]) {
+                    data.jugadores[cfg.nombre] = { xpTotal: parseInt(localStorage.getItem('totalXP'))||0, sesiones:[] };
+                    await parejaGuardarDatos(data);
+                }
+
+                parejaSetLoading('');
+                parejaSyncDot('ok');
+                parejaRenderDashboard(data, cfg);
+                parejaStartAutoRefresh();
+
+            } catch(e) {
+                parejaSyncDot('error');
+                if (!silent) parejaSetLoading('❌ Error de conexión. Verifica tu internet.');
+                console.error(e);
+            }
+        }
+
+        // ── Auto-refresh ──
+        let _parejaRefreshInterval = null;
+        function parejaStartAutoRefresh() {
+            parejaStopAutoRefresh();
+            _parejaRefreshInterval = setInterval(() => {
+                const cfg = getParejaConfig();
+                const vista = document.getElementById('pareja-view');
+                if (cfg && vista && vista.classList.contains('active-view')) {
+                    _parejaCacheTime = 0;
+                    renderPareja(true);
+                }
+            }, 30000);
+        }
+        function parejaStopAutoRefresh() {
+            if (_parejaRefreshInterval) { clearInterval(_parejaRefreshInterval); _parejaRefreshInterval = null; }
+        }
+        function parejaSyncDot(estado) {
+            const dot = document.getElementById('pareja-sync-dot');
+            if (dot) dot.className = 'pj-sync-dot pj-sync-' + estado;
+        }
+
+        async function parejaEnviarReto() {
+            const input = document.getElementById('pareja-reto-input');
+            const texto = input?.value.trim();
+            if (!texto) return;
+            const cfg = getParejaConfig();
+            if (!cfg || !cfg.binId) return;
+            parejaSyncDot('loading');
+            try {
+                _parejaCacheTime = 0;
+                let data = await parejaLeerDatos();
+                if (!data) data = { jugadores: {}, retos: [] };
+                if (!data.retos) data.retos = [];
+                data.retos.push({ de: cfg.nombre, texto, ts: Date.now() });
+                data.retos = data.retos.slice(-10);
+                await parejaGuardarDatos(data);
+                input.value = '';
+                parejaSyncDot('ok');
+                _parejaCacheTime = 0;
+                renderPareja(true);
+            } catch(e) { parejaSyncDot('error'); }
+        }
+
+        function parejaRenderDashboard(data, cfg) {
+            const jugadores = Object.entries(data.jugadores || {});
+            const cardsEl = document.getElementById('pareja-cards');
+            if (!cardsEl) return;
+            cardsEl.innerHTML = '';
+            const colores = ['var(--primary)', '#1CB0F6'];
+            const semana = getLunes();
+            const xpSem = ([, jug]) => (jug.sesiones || []).filter(s => s.fecha >= semana).reduce((s,x) => s+x.xp, 0);
+            const xpSemanas = jugadores.map(jug => xpSem(jug));
+            const maxSem = Math.max(...xpSemanas, 0);
+
+            jugadores.forEach(([nombre, jug], i) => {
+                const esYo = nombre === cfg.nombre;
+                const nivel = getNivelActual(jug.xpTotal);
+                const esGanando = xpSemanas[i] === maxSem && maxSem > 0 && jugadores.length > 1;
+                const card = document.createElement('div');
+                card.className = 'pj-player-card' + (esYo ? ' pj-me' : '') + (esGanando ? ' pj-winning' : '');
+                if (esYo) card.innerHTML += `<div class="pj-me-badge">TÚ</div>`;
+                if (esGanando) card.innerHTML += `<div class="pj-crown">👑</div>`;
+                card.innerHTML += `
+                    <span class="pj-player-emoji">${nivel.emoji}</span>
+                    <div class="pj-player-name">${nombre}</div>
+                    <div class="pj-player-nivel">${nivel.nombre}</div>
+                    <div class="pj-player-xp" style="color:${colores[i%2]}">${jug.xpTotal.toLocaleString()}</div>
+                    <div class="pj-player-xplbl">XP total</div>
+                `;
+                cardsEl.appendChild(card);
+            });
+
+            const xpCombinado = jugadores.reduce((s,[,j]) => s+j.xpTotal, 0);
+            const xpTotalEl = document.getElementById('pareja-xp-total');
+            if (xpTotalEl) xpTotalEl.textContent = xpCombinado.toLocaleString();
+            const nivelCombo = getNivelActual(xpCombinado);
+            const nivelEl = document.getElementById('pareja-total-label');
+            if (nivelEl) nivelEl.textContent = `${nivelCombo.emoji} Nivel combo: ${nivelCombo.nombre}`;
+
+            if (jugadores.length >= 2) {
+                const [[n1],[n2]] = jugadores;
+                const s1 = xpSemanas[0], s2 = xpSemanas[1];
+                const total = s1+s2||1;
+                const pct1 = Math.round((s1/total)*100);
+                document.getElementById('pareja-vs-nombre1').textContent = n1;
+                document.getElementById('pareja-vs-nombre2').textContent = n2;
+                document.getElementById('pareja-vs-pct').textContent = `${s1} vs ${s2} XP`;
+                document.getElementById('pareja-bar-p1').style.width = pct1+'%';
+                document.getElementById('pareja-bar-p2').style.width = (100-pct1)+'%';
+                document.getElementById('pareja-winner-msg').textContent =
+                    s1===0&&s2===0 ? '¡Nadie ha estudiado esta semana! 😴'
+                    : s1===s2      ? '¡Empate perfecto esta semana! 🤝'
+                    : s1>s2        ? `🔥 ¡${n1} va ganando esta semana!`
+                    :                `🔥 ¡${n2} va ganando esta semana!`;
+            } else {
+                document.getElementById('pareja-bar-p1').style.width = '50%';
+                document.getElementById('pareja-bar-p2').style.width = '50%';
+                document.getElementById('pareja-winner-msg').innerHTML =
+                    `⏳ Esperando a tu pareja...<br>
+                    <span style="font-size:0.68rem;font-weight:700;background:var(--bg);border:2px solid var(--border);border-radius:10px;padding:5px 10px;display:inline-block;margin-top:5px;word-break:break-all;cursor:pointer;"
+                        onclick="navigator.clipboard.writeText('${cfg.binId||''}').then(()=>{this.textContent='✅ ¡Copiado!'})">
+                        📋 ${cfg.binId||'—'}
+                    </span>`;
+            }
+
+            // Retos
+            const retosEl = document.getElementById('pareja-retos-recibidos');
+            if (retosEl) {
+                const retos = (data.retos||[]).slice(-3).reverse();
+                retosEl.innerHTML = '';
+                retos.forEach(r => {
+                    const esMio = r.de === cfg.nombre;
+                    const div = document.createElement('div');
+                    div.className = 'pj-reto-burbuja '+(esMio?'pj-reto-enviado':'pj-reto-recibido');
+                    div.innerHTML = `${!esMio?'🎯 ':''}${r.texto}<div class="pj-reto-meta">${esMio?'Tú':'De '+r.de} · ${formatearHace(r.ts)}</div>`;
+                    retosEl.appendChild(div);
+                });
+            }
+
+            // Historial
+            const histEl = document.getElementById('pareja-historial');
+            if (!histEl) return;
+            histEl.innerHTML = '';
+            const todasSesiones = {};
+            jugadores.forEach(([nombre,jug]) => {
+                (jug.sesiones||[]).slice(-7).forEach(s => {
+                    if (!todasSesiones[s.fecha]) todasSesiones[s.fecha]={};
+                    todasSesiones[s.fecha][nombre]=s.xp;
+                });
+            });
+            const fechas = Object.keys(todasSesiones).sort().reverse().slice(0,7);
+            if (!fechas.length) {
+                histEl.innerHTML = '<div class="pj-hist-xp-nil" style="text-align:center;padding:10px 0;">Aún no hay sesiones 📚</div>';
+            } else {
+                fechas.forEach(fecha => {
+                    const row = document.createElement('div');
+                    row.className = 'pj-hist-row';
+                    const entradas = jugadores.map(([n],i) => {
+                        const xp = todasSesiones[fecha]?.[n]||0;
+                        return `<span class="${xp>0?'pj-hist-xp-ok':'pj-hist-xp-nil'}">${n}: ${xp>0?'+'+xp+' XP':'—'}</span>`;
+                    }).join('<span class="pj-hist-dot">·</span>');
+                    row.innerHTML = `<span class="pj-hist-fecha">${formatearFechaCorta(fecha)}</span><div class="pj-hist-entries">${entradas}</div>`;
+                    histEl.appendChild(row);
+                });
+            }
+
+            const syncEl = document.getElementById('pareja-last-sync');
+            if (syncEl) syncEl.textContent = 'Actualizado ' + formatearHace(Date.now());
+        }
+
+        function getLunes() {
+            const hoy = new Date();
+            const dia = hoy.getDay();
+            const diff = dia===0?-6:1-dia;
+            const lunes = new Date(hoy);
+            lunes.setDate(hoy.getDate()+diff);
+            return lunes.toISOString().slice(0,10);
+        }
+        function formatearFechaCorta(isoStr) {
+            const [,m,d] = isoStr.split('-');
+            const meses = ['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];
+            return `${parseInt(d)} ${meses[parseInt(m)-1]}`;
+        }
+        function formatearHace(ts) {
+            const diff = Math.floor((Date.now()-ts)/1000);
+            if (diff<60)    return 'hace '+diff+'s';
+            if (diff<3600)  return 'hace '+Math.floor(diff/60)+'min';
+            if (diff<86400) return 'hace '+Math.floor(diff/3600)+'h';
+            return 'hace '+Math.floor(diff/86400)+'d';
         }
 
         function mostrarXPFlotante(cantidad) {
@@ -5620,7 +6722,7 @@
                 document.getElementById('control-group').style.display = 'flex';
             } catch(e) {
                 feedback.className = 'wrong';
-                feedback.textContent = '<span class="material-symbols-rounded">warning</span> No se pudo evaluar. Comprueba tu respuesta manualmente.';
+                feedback.innerHTML = '<span class="material-symbols-rounded">warning</span> No se pudo evaluar. Comprueba tu respuesta manualmente.';
                 feedback.style.display = 'block';
                 document.getElementById('a-section').style.display = 'block';
                 document.getElementById('control-group').style.display = 'flex';
